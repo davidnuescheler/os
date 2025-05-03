@@ -7,6 +7,7 @@ import {
   decorateSections,
   decorateBlocks,
   decorateTemplateAndTheme,
+  createOptimizedPicture,
   waitForFirstImage,
   loadSection,
   loadSections,
@@ -53,12 +54,21 @@ function buildAutoBlocks(main) {
   }
 }
 
+function removeLegacyImages(main) {
+  const legacyImages = main.querySelectorAll('picture img');
+  legacyImages.forEach((img) => {
+    const picture = createOptimizedPicture(img.src, img.alt);
+    img.closest('picture').replaceWith(picture);
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
  */
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
+  removeLegacyImages(main);
   // hopefully forward compatible button decoration
   decorateButtons(main);
   decorateIcons(main);
@@ -80,15 +90,6 @@ async function loadEager(doc) {
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
   }
-
-  try {
-    /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
-    if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
-      loadFonts();
-    }
-  } catch (e) {
-    // do nothing
-  }
 }
 
 /**
@@ -107,7 +108,6 @@ async function loadLazy(doc) {
   loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
-  loadFonts();
 }
 
 /**
