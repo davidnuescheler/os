@@ -1,5 +1,6 @@
 .carousel .carousel-slides-container {
   position: relative;
+  margin: 0 -24px;
 }
 
 .carousel .carousel-slides,
@@ -14,7 +15,8 @@
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   overflow: scroll clip;
-  min-height: 100dvh;
+  width: 100%;
+  aspect-ratio: 1;
 }
 
 .carousel .carousel-slides::-webkit-scrollbar {

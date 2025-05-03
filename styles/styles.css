@@ -29,10 +29,10 @@
   --body-font-size-xs: 17px;
 
   /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
+  --heading-font-size-xxl: 32px;
+  --heading-font-size-xl: 30px;
+  --heading-font-size-l: 28px;
+  --heading-font-size-m: 26px;
   --heading-font-size-s: 24px;
   --heading-font-size-xs: 22px;
 
@@ -41,19 +41,6 @@
 
   /* site width */
   --site-width: 1000px;
-}
-
-/* fallback fonts */
-@font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
-}
-
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
 }
 
 @media (width >= 900px) {
@@ -257,4 +244,9 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+main .section .default-content-wrapper img {
+  margin: -24px;
+  max-width: calc(100% + 48px);
 }
