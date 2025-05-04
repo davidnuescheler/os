@@ -83,6 +83,7 @@
   background-color: #dadada;
   transition: background-color 0.2s;
   line-height: 0;
+  opacity: 0.5;
 }
 
 .carousel .carousel-slide-indicator button img {
@@ -96,7 +97,7 @@
 .carousel .carousel-slide-indicator button:disabled,
 .carousel .carousel-slide-indicator button:hover,
 .carousel .carousel-slide-indicator button:focus-visible {
-  background-color: var(--text-color);
+  opacity: 1;
 }
 
 .carousel .carousel-navigation-buttons {
